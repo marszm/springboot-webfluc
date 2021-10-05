@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>springboot-webfluc</artifactId>
+    <artifactId>springboot-webflux</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-webfluc</name>
-    <description>springboot-webfluc</description>
+    <name>springboot-webflux</name>
+    <description>springboot-webflux</description>
     <properties>
         <java.version>11</java.version>
     </properties>
