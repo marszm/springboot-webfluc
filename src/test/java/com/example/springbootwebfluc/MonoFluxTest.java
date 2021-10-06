@@ -7,8 +7,10 @@ class MonoFluxTest {
 
     @Test
     void testMono() {
-        Mono<String> monoString = Mono.just("any data type").log(); //publisher
-        monoString.subscribe(System.out::println); //subscriber
+        Mono<?> monoString = Mono.just("any data type")
+                .then(Mono.error(new RuntimeException("exception occured")))
+                .log(); //publisher
+        monoString.subscribe(System.out::println, throwable -> System.out.println(throwable.getMessage())); //subscriber
 
     }
 
