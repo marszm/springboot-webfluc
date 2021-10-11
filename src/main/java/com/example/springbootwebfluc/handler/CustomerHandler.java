@@ -26,4 +26,10 @@ public class CustomerHandler {
         return ServerResponse.ok().body(customerMono, Customer.class);
     }
 
+    public Mono<ServerResponse> saveCustomer(ServerRequest serverRequest) {
+        Mono<Customer> customerMono = serverRequest.bodyToMono(Customer.class);
+        customerMono.map(customer -> customer.getId() + ":" + customer.getName());
+        return ServerResponse.ok().body(customerMono, Customer.class);
+    }
+
 }
