@@ -1,6 +1,7 @@
 package com.example.springbootwebfluc.router;
 
 import com.example.springbootwebfluc.handler.CustomerHandler;
+import com.example.springbootwebfluc.handler.CustomerStreamHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +15,15 @@ public class RouterConfig {
     @Autowired
     private CustomerHandler customerHandler;
 
+    @Autowired
+    private CustomerStreamHandler customerStreamHandler;
+
     @Bean
     public RouterFunction<ServerResponse> routerFunction() {
         return RouterFunctions.route()
                 .GET("/router/cusomers", customerHandler::loadCustomers)
+                .GET("/router/cusomers/stream", customerStreamHandler::getCustomers)
+                .GET("/router/cusomer/{input}",customerHandler::findCustomer)
                 .build();
     }
 

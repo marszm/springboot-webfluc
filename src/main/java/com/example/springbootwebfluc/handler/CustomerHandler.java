@@ -20,4 +20,10 @@ public class CustomerHandler {
         return ServerResponse.ok().body(customerList, Customer.class);
     }
 
+    public Mono<ServerResponse> findCustomer(ServerRequest serverRequest) {
+        int customerId = Integer.parseInt(serverRequest.pathVariable("inpput"));
+        Mono<Customer> customerMono = customerDao.getCustomerList().filter(customer -> customer.getId() == customerId).next();
+        return ServerResponse.ok().body(customerMono, Customer.class);
+    }
+
 }
