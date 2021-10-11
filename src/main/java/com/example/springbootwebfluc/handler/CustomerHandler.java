@@ -21,7 +21,7 @@ public class CustomerHandler {
     }
 
     public Mono<ServerResponse> findCustomer(ServerRequest serverRequest) {
-        int customerId = Integer.parseInt(serverRequest.pathVariable("inpput"));
+        int customerId = Integer.parseInt(serverRequest.pathVariable("input"));
         Mono<Customer> customerMono = customerDao.getCustomerList().filter(customer -> customer.getId() == customerId).next();
         return ServerResponse.ok().body(customerMono, Customer.class);
     }
